@@ -1,0 +1,9 @@
+body {
+  padding: 3em 20%;
+}
+.is-hidden {
+  display: none;
+}
+.container {
+  height: 1.1rem;
+}
