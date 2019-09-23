@@ -8,7 +8,8 @@
  * @param {String} id
  */
 function myHideFunction(id) {
-  // TODO
+  $("#"+id).fadeIn(500);
+  Wicket.Event.unsubscribe("/myAnim/hidden/"+id, mySubscriber);
 }
 
 /**
@@ -17,7 +18,11 @@ function myHideFunction(id) {
  * @param {String} id
  */
 function myShowFunction(id) {
-  // TODO
+  var el = $("#"+id);
+  el.attr("id", id+"-anim").fadeOut(500, function(){
+    Wicket.Event.publish("/myAnim/hidden/"+id, id);
+  });
+  $("<span/>").attr("id", id).appendTo(el.parent());
 }
 
 /**
