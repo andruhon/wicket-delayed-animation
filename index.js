@@ -8,7 +8,9 @@
  * @param {String} id
  */
 function myHideFunction(id) {
-  // TODO
+  var el = $("#"+id);
+  el.attr("id", id+"-anim").fadeOut(500);
+  $("<span/>").attr("id", id).appendTo(el.parent());
 }
 
 /**
@@ -17,7 +19,10 @@ function myHideFunction(id) {
  * @param {String} id
  */
 function myShowFunction(id) {
-  // TODO
+  setTimeout(function() {
+    var el = $("#"+id);
+    el.fadeIn(500);
+  }, 500);
 }
 
 /**
