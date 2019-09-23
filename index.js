@@ -8,8 +8,11 @@
  * @param {String} id
  */
 function myHideFunction(id) {
-  $("#"+id).fadeIn(500);
-  Wicket.Event.unsubscribe("/myAnim/hidden/"+id, mySubscriber);
+  var el = $("#"+id);
+  el.attr("id", id+"-anim").fadeOut(500, function(){
+    Wicket.Event.publish("/myAnim/hidden/"+id, id);
+  });
+  $("<span/>").attr("id", id).appendTo(el.parent());
 }
 
 /**
@@ -18,11 +21,12 @@ function myHideFunction(id) {
  * @param {String} id
  */
 function myShowFunction(id) {
-  var el = $("#"+id);
-  el.attr("id", id+"-anim").fadeOut(500, function(){
-    Wicket.Event.publish("/myAnim/hidden/"+id, id);
-  });
-  $("<span/>").attr("id", id).appendTo(el.parent());
+  Wicket.Event.subscribe("/myAnim/hidden/"+id, mySubscriber);
+}
+
+function mySubscriber(evt, id) {
+  $("#"+id).fadeIn(500);
+  Wicket.Event.unsubscribe("/myAnim/hidden/"+id, mySubscriber);
 }
 
 /**
