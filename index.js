@@ -8,7 +8,9 @@
  * @param {String} id
  */
 function myHideFunction(id) {
-  // TODO
+  $("#"+id).fadeOut(500, function(){
+    notify();
+  });
 }
 
 /**
@@ -17,7 +19,7 @@ function myHideFunction(id) {
  * @param {String} id
  */
 function myShowFunction(id) {
-  // TODO
+  $("#"+id).fadeIn(500);
 }
 
 /**
@@ -27,4 +29,4 @@ Wicket.Event.add(window, "domready", function(event) {
   document.getElementById("doSomething").addEventListener("click", function(){
     Wicket.Ajax.get({u: "/response.xml"});
   });
-})
+});
