@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ajax-response>
   <component id="animateMe" ><![CDATA[<div id="animateMe" class="is-hidden">Replaced Text</div>]]></component>
-  <priority-evaluate><![CDATA[(function(){myHideFunction("animateMe");})();]]></priority-evaluate>
+  <priority-evaluate><![CDATA[(function(){notify|myHideFunction("animateMe");})();]]></priority-evaluate>
   <evaluate><![CDATA[(function(){myShowFunction("animateMe");})();]]></evaluate>
   <meta>
     <nonce>4AEemGb0xJptoIGFP3Nd</nonce>
