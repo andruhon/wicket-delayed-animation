@@ -9,9 +9,19 @@
  */
 function myHideFunction(id) {
   var notify = Wicket.Ajax.Call.suspend();
-  $("#"+id).fadeOut(2500, function(){
+  $("#"+id).fadeOut(3500, function(){
+    console.log("fade out done");
     notify();
   });
+  otherSuspendingFunction();
+}
+
+function otherSuspendingFunction() {
+  var notify = Wicket.Ajax.Call.suspend();
+  setTimeout(function () {
+    console.log("otherSuspendingFunction done");
+    notify(); // attempts to notify before the fadeOut finished
+  }, 1000);
 }
 
 /**
